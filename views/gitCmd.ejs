@@ -1,4 +1,26 @@
 <%- include("./partials/header") -%>
-<h1>jai maa bhawani</h1>
+
+  <div class="container">
+      <h1>Git commands :-</h1>
+      <strong>This page is created just for storing all information at one place</strong>
+
+      <ul class="gitCmds">
+         <li>
+             <div class="cmdBlock">
+                <button onclick="copyToClipboard(this)" class="copyIcon"><i class="material-icons copyIcon" >attach_file</i></button>
+                <code id="1">git init</code>
+             </div>
+             <p>To initialize git in your project</p>
+         </li>
+      </ul>
+  </div>
+
+  <script>
+      function copyToClipboard(THIS){
+            var copyText=THIS.nextElementSibling;
+            document.execCommand("copy");
+            M.toast({html: `Copied: ${copyText.innerHTML}`})
+      }
+  </script>
 </body>
 </html>
