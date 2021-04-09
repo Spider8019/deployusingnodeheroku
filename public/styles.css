@@ -71,7 +71,7 @@
         flex-direction:row-reverse;
         align-items: center;
         justify-content: space-between;
-        overflow:hidden;
+        overflow:auto;
     }
     .copyIcon{
         transition:all 0.5s ease;
