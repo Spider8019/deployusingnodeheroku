@@ -33,6 +33,32 @@
         font-size:0.8rem;
         margin:0 1rem;
     }
+    .linkcontainer{
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .link{
+        flex-grow:1;
+        flex-shrink: 0;
+        height:100px;
+        min-width:100px;
+        padding-left:2rem;
+        padding-right:0.5rem;
+        background:black;
+        color:white;
+        display:grid;
+        align-items:flex-end;
+        justify-content: flex-end;
+        font-size:2.5vw;
+        font-weight:800;
+        overflow:hidden;
+        transition:all 0.1s ease;
+    }
+    @media screen and (max-width:990px){
+        .link{
+            font-size:1.5rem;
+        }
+    }
     .containerAndNav{
         display:flex;
         flex-wrap:wrap;

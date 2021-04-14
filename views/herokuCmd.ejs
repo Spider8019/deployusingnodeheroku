@@ -1,0 +1,63 @@
+<%- include("./partials/header"); -%>
+<body>
+    <div class="container">
+        <h1>DEPLOYING NODE.JS PROJECT FOR WINDOW USERS</h1>
+        <P>This is just for practising deploy on heroku<br><strong>Prerequisites:</strong>Git bash, account on <a href="https://github.com/">Github.com</a> and <a href="https://dashboard.heroku.com/apps">Heroku</a></P>
+
+        <br><br><br>
+        <h2>Version control</h2>
+        <ul>
+            <li>Create basic files on your local machine</li>
+            <li>Install all dependencies from npm(node package module)</li>
+            <li>Commands for version control
+                <ol>
+                    <li>git init</li>
+                    <li>git add .</li>
+                    <li>git commit -m "<i>Your Message</i>"</li>
+
+                </ol>
+            </li>
+        </ul>
+        <br><br><br>
+        <h2>SSH</h2>
+        <ul>
+            <li>SSH (secure shell) is a network communication protocol that enables two computer to communicate and share data</li>
+            <li>ls -a -l ~/.ssh
+                <p><strong>Result:</strong>total 16<br>
+                drwxr-xr-x 1 hp 197121 0 Feb 14 20:17 ./<br>
+                drwxr-xr-x 1 hp 197121 0 Feb 25 03:31 ../</p>
+            </li>
+            <li>ssh-keygen -t rsa -b 4096 -C "<i>Your mail id on Github.com</i>"</li>
+            <li>ls -a -l ~/.ssh
+                <p><strong>Result:</strong>drwxr-xr-x 1 hp 197121 0 Mar 6 19:03 ./<br>
+                drwxr-xr-x 1 hp 197121 0 Feb 25 03:31 ../<br>
+                -rw-r--r-- 1 hp 197121 3401 Mar 6 19:03 id_rsa<i> Private file</i><br>
+                -rw-r--r-- 1 hp 197121 754 Mar 6 19:03 id_rsa.pub <i>Public file required for communicating with third party server</i></p>
+            </li>
+            <li>eval %(ssh-agent -s)
+                <p><strong>Result:</strong>You get something like "Agent pid 1052(4 digit number)"</p>
+            </li>
+            <li>ssh-add ~/.ssh/id_rsa
+                <p><strong>Result:</strong>Identity added: /c/Users/hp/.ssh/id_rsa ("<i>Your mail id</i>")</p>
+            </li>
+            <li>cat ~/.ssh/id_rsa.pub<p><strong>Result:</strong>It will show your ssh key starting with <i>ssh-rsa</i> and ending with <i>Your mail id</i></p></li>
+            <li>ssh -T git@github.com</li>
+            <li>git push -u origin master</li>
+        </ul>
+        <h2><br><br><br>heroku Deployement</h2>
+        <ul>
+            <li>heroku keys:add<p><strong>Result:</strong>Found an SSH public key at C:\Users\hp\.ssh\id_rsa.pub<br>
+            ? Would you like to upload it to Heroku? Yes<br>
+            Uploading C:\Users\hp\.ssh\id_rsa.pub SSH key... done</p></li>
+            <li>Before going to next step, go to your package.json file and replace script with <br><i>"scripts": {<br>
+            "start":"node app.js"<br>
+            },</i><br> modify all links(e.g: http://localhost:3000 with /) and finally dont forget to remove hard coded port number with env variable(process.env.PORT||3000)</li>
+            <li>heroku create "<i>Your Projet Name</i>"<p><strong>Result:</strong>Creating ⬢ deployingonheroku... done<br>
+            https://'YOUR_APPLICATION_NAME'.herokuapp.com/ | https://git.heroku.com/"YOUR_APPLICATION_NAME".git</p></li>
+            <li>Since you have modifed the package.json file .So you have to add, commit, and push it again <br><i>git add .</i><br><i>git commit -m "your message"</i><br><i>git push</i></li>
+            <li>git push heroku master<br><i>https://'YOUR_APPLICATION_NAME'.herokuapp.com/</i><br>Your link is ready :)</li>
+
+        </ul>
+    </div>
+</body>
+</html>

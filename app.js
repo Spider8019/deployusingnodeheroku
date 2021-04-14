@@ -15,6 +15,13 @@ app.get("/",async(req,res)=>{
         res.send(`there is an error ${error}`)
     }
 })
+app.get("/herokucmd",async(req,res)=>{
+    try{
+        res.render("herokuCmd")
+    }catch(error){
+        res.send(`there is an error ${error}`)
+    }
+})
 app.get("/gitcmd",async(req,res)=>{
     try{
         res.render("gitCmd")
