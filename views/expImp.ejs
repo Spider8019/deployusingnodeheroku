@@ -1,0 +1,46 @@
+<%- include("./partials/header") -%>
+
+<div class="containerAndNav">
+  <div class="container">
+      <h1>Export and Imports in JS :-</h1>
+      <strong>This page is created just for storing all information at one place</strong>
+      <br>for versions newer than ES6
+     <ul class="gitCmds">
+         <li>
+             <div class="cmdBlock">
+                <button onclick="copyToClipboard(this)" class="copyIcon"><i class="material-icons copyIcon" >attach_file</i></button>
+                <code id="1">export default "name"<br>import "name(same and different both possible)" from "relative_file_address_of_name_file"</code>
+             </div>
+             <p>You can import with any name because it is a default export. You can use default only for anyone, in case if you have more than one export</p>
+         </li>
+         <li>
+             <div class="cmdBlock">
+                <button onclick="copyToClipboard(this)" class="copyIcon"><i class="material-icons copyIcon" >attach_file</i></button>
+                <code id="1">export {"name1","name2","...."}<br/>
+                import {"name1","name2","...."} from "relative_file_address_of_name_file"</code>
+             </div>
+             <p>Since we can export only one section of code using default. So to export multiple or other files we should go this way</p>
+         </li>
+         <li>
+             <div class="cmdBlock">
+                <button onclick="copyToClipboard(this)" class="copyIcon"><i class="material-icons copyIcon" >attach_file</i></button>
+                <code id="1">import * as "anyName" from "relative_file_address_of_name_file"</code>
+             </div>
+             <p>So whenever you are importing like this, it will import all exported pieces of code from that file and store it in object with "anyName".<br/>Now you can access the exported piece just like obj.property.</p>
+         </li>
+      </ul>
+    
+
+  <script>
+      function copyToClipboard(THIS){
+            var copyText=THIS.nextElementSibling;
+            var inpEle=document.createElement("INPUT")
+            inpEle.setAttribute("value",copyText.innerHTML);
+            console.log(inpEle)
+            inpEle.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+            M.toast({html: `Copied: ${copyText.innerHTML}`})
+      }
+  </script>
+</body>
+</html>
